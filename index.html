@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Conf 2025</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1f005c;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    #avatar {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #ff6b4d;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <img src="assets/images/logo-mark.svg">
+  <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+  <p>Secure your spot at next years biggest coding conference</p>
+  <div class="form-container">
+    <input type="file" id="avatar" accept="image/*" />
+    <input type="text" id="fullname" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    <input type="text" id="github" placeholder="GitHub Username" required />
+    <button onclick="submitForm()" src="ticket.html">Generate My Ticket</button>
+  </div>
+  <script>
+    function submitForm() {
+      const fullname = document.getElementById("fullname").value;
+      const github = document.getElementById("github").value;
+      const file = document.getElementById("avatar").files[0];
+
+      if (!file || !fullname || !github) {
+        alert("Please fill in all fields and upload your photo!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        localStorage.setItem("avatar", reader.result);
+        localStorage.setItem("fullname", fullname);
+        localStorage.setItem("github", github);
+        window.location.href = "ticket.html";
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+
+</body>
+</html>

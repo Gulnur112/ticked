@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Ticket</title>
+  <style>
+    body {
+      background: #1f005c;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: #ff7b72; 
+    }
+
+    p.email-text {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #cccccc;
+    }
+
+    p.email-text span {
+      color: #ff7b72;
+    }
+
+    .ticket {
+      background: url('assets/images/pattern-ticket.svg') no-repeat center;
+      background-size: cover;
+      margin: 50px auto 0;
+      padding: 30px;
+      max-width: 450px;
+      text-align: left;
+      position: relative;
+    }
+
+   
+
+    .ticket-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .ticket-header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .ticket-date {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    .ticket-user {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .ticket-user img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .user-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .user-info p {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+     
+  </style>
+</head>
+<body>
+
+ 
+  <img src="assets/images/logo-mark.svg" alt="Coding Conf Logo" height="40" /> 
+  <h1>Congrats, <span id="user-name">User</span>!<br>Your ticket is ready.</h1>
+
+  <p class="email-text">
+    We’ve emailed your ticket to <span id="user-email">your@email.com</span> and will send updates in the run up to the event.
+  </p>
+
+  <div class="ticket">
+    <div class="ticket-header">
+      <img src="assets/images/logo-mark.svg" alt="Logo"> 
+      <div>
+        <h2 style="margin: 0;">Coding Conf</h2>
+        <div class="ticket-date">Jan 31, 2025 / Austin, TX</div>
+      </div>
+    </div>
+
+    <div class="ticket-user">
+      <img id="user-avatar" src="" alt="User Avatar">
+      <div class="user-info">
+        <h3 id="user-name-card">User Name</h3>
+        <p id="user-github">@username</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("user-avatar").src = localStorage.getItem("avatar");
+    const name = localStorage.getItem("fullname");
+    const github = localStorage.getItem("github");
+    const email = localStorage.getItem("email") || "youremail@example.com";
+
+    document.getElementById("user-name").innerText = name;
+    document.getElementById("user-name-card").innerText = name;
+    document.getElementById("user-github").innerText = "@" + github;
+    document.getElementById("user-email").innerText = email;
+  </script>
+
+</body>
+</html>
